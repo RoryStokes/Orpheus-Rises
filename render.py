@@ -9,7 +9,7 @@ class Render():
         self.world = world
         self.event = event
         self.window = window
-        window.fill(pygame.Color(255,255,255,255))
+        window.fill(pygame.Color(0,0,0,255))
         w = world.width
         h = world.height
         data = world.map

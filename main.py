@@ -12,6 +12,7 @@ fpsClock = pygame.time.Clock()
 event_manager = event.Event()
 world = world.World(event_manager,"maps/test")
 renderer = render.Render(event_manager,world,window)
+pygame.display.update();
 running = True
 def close():
     global running
