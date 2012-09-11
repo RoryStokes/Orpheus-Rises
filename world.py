@@ -15,6 +15,6 @@ class World:
 
     def get_cell(self,x,y):
         if x<self.width and y<self.height:
-            return self.map[x + self.height*y]
+            return self.map[x + self.height*y] - 1
         else:
             print "ERROR: Invalid cell ("+x+","+y+")"
