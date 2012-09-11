@@ -12,7 +12,6 @@ fpsClock = pygame.time.Clock()
 event_manager = event.Event()
 world = world.World(event_manager,"maps/test")
 renderer = render.Render(event_manager,world,window)
-pygame.display.update();
 running = True
 def close():
     global running
@@ -23,6 +22,7 @@ while running:
     fpsClock.tick(30)
     event_manager.notify("update", fpsClock.get_time()/1000.0)
     event_manager.update()
+    pygame.display.update();
 
     eventlist = pygame.event.get()
     for e in eventlist:
