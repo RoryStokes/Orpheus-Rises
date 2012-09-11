@@ -1,7 +1,9 @@
 # RENDER
 import world
 import pygame
+import tile
 tileset = pygame.image.load('img/tile_colours.png')
+player = pygame.image.load('img/character.png')
 
 class Render():
     
@@ -9,10 +11,13 @@ class Render():
         self.world = world
         self.event = event
         self.window = window
-        event.register("update", self.update)
+        event.register("draw", self.draw)
+        event.register("move", self.move_player)
         self.i = 0
+        self.px = 0
+        self.py = 0
         
-    def update(self,dt):
+    def draw(self):
         
         # Load data from world
         w = self.world.width
@@ -42,11 +47,11 @@ class Render():
                 x += 1
 
             y += 1
-
+        self.window.blit( player, (self.px,self.py) )
             
     def draw_cell(self,x,y):
         # Read ground type
-        type = self.world.get_cell(y-x,x)
+        type = self.world.get_cell(x,y-x)
         
         # Calculate image locations
         dest = pygame.Rect((self.world.height-y-1)*32 + x*64, 16*y, 64,32)
@@ -54,3 +59,18 @@ class Render():
 
         # Blit background image
         self.window.blit( tileset, dest, mask )
+
+    def move_player(self,dir):
+        if dir == "up":
+            self.px += 32
+            self.py -= 16
+        elif dir == "down":
+            self.px -= 32
+            self.py += 16
+        elif dir == "left":
+            self.px -= 32
+            self.py -= 16
+        elif dir == "right":
+            self.px += 32
+            self.py += 16
+            
