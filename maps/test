@@ -1,0 +1,39 @@
+{ "height":10,
+ "layers":[
+        {
+         "data":[3, 3, 3, 3, 3, 6, 3, 3, 3, 3, 3, 2, 2, 3, 3, 3, 6, 3, 8, 3, 3, 2, 2, 3, 8, 3, 3, 3, 3, 5, 3, 3, 3, 3, 6, 3, 3, 5, 3, 3, 3, 3, 6, 3, 3, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3, 5, 3, 7, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 7, 3, 3, 3, 8, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 3, 7, 3, 3, 8],
+         "height":10,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }],
+ "orientation":"isometric",
+ "properties":
+    {
+
+    },
+ "tileheight":32,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "image":"..\/img\/tile_colours.png",
+         "imageheight":128,
+         "imagewidth":256,
+         "margin":0,
+         "name":"tile_colours",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":32,
+         "tilewidth":64
+        }],
+ "tilewidth":64,
+ "version":1,
+ "width":10
+}
