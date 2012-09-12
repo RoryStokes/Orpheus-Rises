@@ -23,29 +23,41 @@ class World:
         self.width = data["layers"][0]["width"]
         self.height = data["layers"][0]["height"]
         
-        i = 0
-        while i < height:
+        y = 0
+        while y < self.height:
             self.map.append([])
-            data["layers"][0]["data"]:
-            self.map.append(i-1)
-            self.objects.append( settings.tiles[i-1].spawn )
-            if(
+            self.objects.append([])
+            x = 0
+            while x < self.width:
+                i = data["layers"][0]["data"][x + y*self.width]
+                self.map[y].append(i-1)
+                if i < len(settings.tiles):
+                    print settings.tiles[i-1].spawn
+                else:
+                    print "ERROR "+str(i)
+                x += 1
+            y += 1
 
     def update(self,dt):
-        for i in range(0,len(self.map)-1):
-            cell = self.map[i]
-            if cell < len(settings.tiles):
-                decay = settings.tiles[cell].decay
-                if decay != -1:
-                    self.map[i] = decay
+        y = 0
+        while y < self.height:
+            x = 0
+            while x < self.width:
+                cell = self.map[y][x]
+                if cell < len(settings.tiles):
+                    decay = settings.tiles[cell].decay
+                    if decay != -1:
+                        self.map[y][x] = decay
+                x += 1
+            y += 1
        
     def get_cell(self,x,y):
         if self.map == "no map":
             print "ERROR: No map loaded"
         else:
             if x<self.width and y<self.height:
-                return self.map[x + self.height*y]
+                return self.map[y][x]
             else:
                 print "ERROR: Invalid cell ("+x+","+y+")"
 
-    def move_player:
+ #   def move_player:
