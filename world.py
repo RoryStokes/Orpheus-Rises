@@ -19,10 +19,17 @@ class World:
         data = json.load(f)
 
         self.map = []
-        for i in data["layers"][0]["data"]:
-            self.map.append(i-1)
+        self.objects = []
         self.width = data["layers"][0]["width"]
         self.height = data["layers"][0]["height"]
+        
+        i = 0
+        while i < height:
+            self.map.append([])
+            data["layers"][0]["data"]:
+            self.map.append(i-1)
+            self.objects.append( settings.tiles[i-1].spawn )
+            if(
 
     def update(self,dt):
         for i in range(0,len(self.map)-1):
@@ -40,3 +47,5 @@ class World:
                 return self.map[x + self.height*y]
             else:
                 print "ERROR: Invalid cell ("+x+","+y+")"
+
+    def move_player:
