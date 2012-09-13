@@ -50,3 +50,15 @@ tiles.append( Tile( 1,-1, 14) )
 tiles.append( Tile( 1,-1, 15) )
  # 15: water_right d
 tiles.append( Tile( 1,-1, 12) )
+ # 16: water_down a
+tiles.append( Tile( 1,-1, 17) )
+ # 17: water_down b
+tiles.append( Tile( 1,-1, 18) )
+ # 18: water_down c
+tiles.append( Tile( 1,-1, 19) )
+ # 19: water_down d
+tiles.append( Tile( 1,-1, 16) )
+ # 20: water_foam a
+tiles.append( Tile( 1,-1, 21) )
+ # 21: water_foam b
+tiles.append( Tile( 1,-1, 20) )
