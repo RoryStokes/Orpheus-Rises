@@ -9,7 +9,7 @@ key_left = [K_LEFT,K_a]
 key_right = [K_RIGHT,K_d]
 
 # Entities
-entities = ["player","spirits"]
+entities = ["player","dead_tree"]
 
 # Tiles
 tiles = []

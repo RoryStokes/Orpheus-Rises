@@ -7,6 +7,7 @@ import settings
 
 tileset = pygame.image.load('img/tile_colours.png')
 player = pygame.image.load('img/player.png')
+dead_tree = pygame.image.load('img/dead_tree.png')
 
 class Render():
     
@@ -15,11 +16,12 @@ class Render():
         self.event = event
         self.window = window
         event.register("draw", self.draw)
-        event.register("focus", self.pan)
-        self.i = 0
+        #event.register("focus", self.
         self.camera_x = 0
         self.camera_y = 0
-        
+
+        self.tree_x = 14*32
+        self.tree_y = 6*16
         
     def draw(self):
         
@@ -51,7 +53,8 @@ class Render():
                 x += 1
 
             y += 1
-        #self.window.blit( player, (self.px,self.py) )
+
+        self.window.blit( dead_tree, (self.tree_x,self.tree_y) )
             
     def draw_cell(self,x,y):
         (x_pos,y_pos) = self.from_grid(x,y)
@@ -74,7 +77,7 @@ class Render():
         print str(x) + ", " + str(y)
 
     def from_grid(self,x,y):
-        new_x = (-y)*32 + x*64
+        new_x = (self.world.height-y)*32 + x*64
         new_y = 16*(y+1)
         return(new_x,new_y)
         
