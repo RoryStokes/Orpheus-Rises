@@ -58,34 +58,34 @@ tiles.append( Tile( 1,-1, 21) )
  # 21: water_foam b
 tiles.append( Tile( 1,-1, 20) )
  # 22: cliff_corner_down
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 23: a cliff end
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 24: another cliff end
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 25: another cliff end
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 26: another cliff end
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 27: another cliff end
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 28: another cliff end
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 29: another cliff end
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 30: last cliff end
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 31: cliff_corner_up
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 32: cliff_corner_right
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 33: cliff_corner_left
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 34: cliff_down
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 35: cliff_left
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 36: cliff_up
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
  # 37: cliff_right
-tiles.append( Tile( 1,-1, -1) )
+tiles.append( Tile( 2,-1, -1) )
