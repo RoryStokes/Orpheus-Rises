@@ -18,14 +18,15 @@ class Entity:
 
     def move(self,dir):
         if dir == "up":
-            self.world.move(self.type,(self.x,self.y),( self.x, self.y-1))
-            self.y -= 1
+            if self.world.move(self.type,(self.x,self.y),( self.x, self.y-1)):
+                self.y -= 1
         elif dir == "down":
-            self.world.move(self.type,(self.x,self.y),( self.x, self.y+1))
-            self.y += 1
+            if self.world.move(self.type,(self.x,self.y),( self.x, self.y+1)):
+                self.y += 1
         elif dir == "left":
-            self.world.move(self.type,(self.x,self.y),( self.x-1, self.y))
-            self.x -= 1
+            if self.world.move(self.type,(self.x,self.y),( self.x-1, self.y)):
+                self.x -= 1
         elif dir == "right":
-            self.world.move(self.type,(self.x,self.y),( self.x+1, self.y))
-            self.x += 1
+            if self.world.move(self.type,(self.x,self.y),( self.x+1, self.y)):
+                self.x += 1
+            

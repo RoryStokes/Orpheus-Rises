@@ -67,7 +67,7 @@ class World:
         return self.objects[y][x]
 
     def move(self,type,(x_i,y_i),(x_f,y_f)):
-        if x_f > 0 and x_f < self.width and y_f > 0 and y_f < self.height:
+        if x_f >= 0 and x_f < self.width and y_f >= 0 and y_f < self.height and settings.tiles[self.map[y_i][x_i]].walkable == settings.tiles[self.map[y_f][x_f]].walkable:
             
             print "MOVING "+type
             new_objects = []
@@ -80,3 +80,7 @@ class World:
                     self.objects[y_f][x_f].append(i)
                     
                 self.objects[y_i][x_i] = new_objects
+
+            return True 
+        else:
+            return False
