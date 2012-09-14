@@ -14,6 +14,8 @@ key_right = [K_RIGHT,K_d]
 entities = []
  # 0: player
 entities.append(Entity('img/character.png'))
+ # 1: dead tree
+entities.append(Entity('img/dead_tree.png'))
 
 
  # Tiles

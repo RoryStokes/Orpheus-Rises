@@ -7,6 +7,7 @@ import settings
 
 tileset = pygame.image.load('img/tile_colours.png')
 player = pygame.image.load('img/character.png')
+dead_tree = pygame.image.load('img/dead_tree.png')
 
 class Render():
     
@@ -19,6 +20,8 @@ class Render():
         self.i = 0
         self.px = 0
         self.py = 0
+        self.tree_x = 14*32
+        self.tree_y = 6*16
         
     def draw(self):
         
@@ -51,6 +54,7 @@ class Render():
 
             y += 1
         self.window.blit( player, (self.px,self.py) )
+        self.window.blit( dead_tree, (self.tree_x,self.tree_y) )
             
     def draw_cell(self,x,y):
         # Read ground type
