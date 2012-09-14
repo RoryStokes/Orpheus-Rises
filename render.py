@@ -6,7 +6,7 @@ import tile
 import settings
 
 tileset = pygame.image.load('img/tile_colours.png')
-player = pygame.image.load('img/character.png')
+player = pygame.image.load('img/player.png')
 
 class Render():
     
@@ -15,7 +15,6 @@ class Render():
         self.event = event
         self.window = window
         event.register("draw", self.draw)
-        event.register("move", self.move_player)
         self.i = 0
         self.px = 0
         self.py = 0
@@ -50,7 +49,7 @@ class Render():
                 x += 1
 
             y += 1
-        self.window.blit( player, (self.px,self.py) )
+        #self.window.blit( player, (self.px,self.py) )
             
     def draw_cell(self,x,y):
         # Read ground type
@@ -65,20 +64,6 @@ class Render():
 
         # Draw objects
         for i in self.world.get_objects(x,y-x):
-            dest = pygame.Rect( (self.world.height-y)*32 + x*64 - settings.entities[i].anchor_x, 16*(y+1) - settings.entities[i].anchor_y, 64,32)
-            self.window.blit( settings.entities[i].image, dest )
-
-    def move_player(self,dir):
-        if dir == "up":
-            self.px += 32
-            self.py -= 16
-        elif dir == "down":
-            self.px -= 32
-            self.py += 16
-        elif dir == "left":
-            self.px -= 32
-            self.py -= 16
-        elif dir == "right":
-            self.px += 32
-            self.py += 16
+            dest = pygame.Rect( (self.world.height-y)*32 + x*64 - i.anchor_x, 16*(y+1) - i.anchor_y, 64,32)
+            self.window.blit( i.image, dest )
             

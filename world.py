@@ -34,9 +34,10 @@ class World:
 		self.map[y].append(i-1)
                 self.objects[y].append([])
                 if i < len(settings.tiles):
-                    spawn = settings.tiles[i-1].spawn
-                    if spawn >= 0 and spawn < len(settings.entities):
-                        self.objects[y][x].append(spawn)
+                    spawn_id = settings.tiles[i-1].spawn
+                    if spawn_id >= 0 and spawn_id < len(settings.entities):
+                        self.objects[y][x].append( entity.Entity( self.event, self, (x,y), settings.entities[spawn_id], (32,54) ) )
+                        
                 x += 1
             y += 1
 
@@ -65,12 +66,15 @@ class World:
     def get_objects(self,x,y):
         return self.objects[y][x]
 
-    def move(self,id,(x_i,y_i),(x_f,y_f)):
+    def move(self,type,(x_i,y_i),(x_f,y_f)):
+        print "MOVING "+type
         new_objects = []
         for i in self.objects[y_i][x_i]:
-            if i != id:
+            if i.type != type:
+                print i.type+" ignored"
                 new_objects.append(i)
+            else:
+                print i.type+" moved"
+                self.objects[y_f][x_f].append(i)
 
         self.objects[y_i][x_i] = new_objects
-
-        self.objects[y_f][x_f].append(id)

@@ -3,7 +3,29 @@ import pygame
 
 class Entity:
     
-    def __init__(self,image,(x,y)):
-        self.image = pygame.image.load('img/character.png')
-        self.anchor_x = x
-        self.anchor_y = y
+    def __init__(self,event,world,(x_loc,y_loc),type,(x_anch,y_anch)):
+        print type
+        self.image = pygame.image.load('img/'+type+'.png')
+        self.type = type
+        self.anchor_x = x_anch
+        self.anchor_y = y_anch
+        self.x = x_loc
+        self.y = y_loc
+        self.world = world
+        self.event = event
+        if self.type == "player":
+            self.event.register("move",self.move)
+
+    def move(self,dir):
+        if dir == "up":
+            self.world.move(self.type,(self.x,self.y),( self.x, self.y-1))
+            self.y -= 1
+        elif dir == "down":
+            self.world.move(self.type,(self.x,self.y),( self.x, self.y+1))
+            self.y += 1
+        elif dir == "left":
+            self.world.move(self.type,(self.x,self.y),( self.x-1, self.y))
+            self.x -= 1
+        elif dir == "right":
+            self.world.move(self.type,(self.x,self.y),( self.x+1, self.y))
+            self.x += 1

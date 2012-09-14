@@ -1,7 +1,6 @@
 # SETTINGS
 from pygame.locals import *
 from tile import Tile
-from entity import Entity
 
 # Key bindings
 key_up = [K_UP,K_w]
@@ -9,14 +8,10 @@ key_down = [K_DOWN,K_s]
 key_left = [K_LEFT,K_a]
 key_right = [K_RIGHT,K_d]
 
-
 # Entities
-entities = []
- # 0: player
-entities.append(Entity('img/character.png'))
+entities = ["player","spirits"]
 
-
- # Tiles
+# Tiles
 tiles = []
  # 0: spawn
 tiles.append( Tile( 1, 0,-1) )
