@@ -67,14 +67,16 @@ class World:
         return self.objects[y][x]
 
     def move(self,type,(x_i,y_i),(x_f,y_f)):
-        print "MOVING "+type
-        new_objects = []
-        for i in self.objects[y_i][x_i]:
-            if i.type != type:
-                print i.type+" ignored"
-                new_objects.append(i)
-            else:
-                print i.type+" moved"
-                self.objects[y_f][x_f].append(i)
-
-        self.objects[y_i][x_i] = new_objects
+        if x_f > 0 and x_f < self.width and y_f > 0 and y_f < self.height:
+            
+            print "MOVING "+type
+            new_objects = []
+            for i in self.objects[y_i][x_i]:
+                if i.type != type:
+                    print i.type+" ignored"
+                    new_objects.append(i)
+                else:
+                    print i.type+" moved"
+                    self.objects[y_f][x_f].append(i)
+                    
+                self.objects[y_i][x_i] = new_objects
