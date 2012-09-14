@@ -2,6 +2,7 @@
 import json
 import settings
 import tile
+import entity
 
 class World:
     
@@ -30,11 +31,12 @@ class World:
             x = 0
             while x < self.width:
                 i = data["layers"][0]["data"][x + y*self.width]
-                self.map[y].append(i-1)
+		self.map[y].append(i-1)
+                self.objects[y].append([])
                 if i < len(settings.tiles):
-                    print settings.tiles[i-1].spawn
-                else:
-                    print "ERROR "+str(i)
+                    spawn = settings.tiles[i-1].spawn
+                    if spawn >= 0 and spawn < len(settings.entities):
+                        self.objects[y][x].append(spawn)
                 x += 1
             y += 1
 
@@ -59,5 +61,16 @@ class World:
                 return self.map[y][x]
             else:
                 print "ERROR: Invalid cell ("+x+","+y+")"
+    
+    def get_objects(self,x,y):
+        return self.objects[y][x]
 
- #   def move_player:
+    def move(self,id,(x_i,y_i),(x_f,y_f)):
+        new_objects = []
+        for i in self.objects[y_i][x_i]:
+            if i != id:
+                new_objects.append(i)
+
+        self.objects[y_i][x_i] = new_objects
+
+        self.objects[y_f][x_f].append(id)

@@ -24,19 +24,19 @@ def close():
     running = False
 event_manager.register("quit", close)
 
-framecount = 10;
+time = 0
 # Main game loop
 while running:
     # Set up frame rate
     fpsClock.tick(60)
 
-    framecount += 1
+    time += fpsClock.get_time()/1000.0
     # Trigger update events
-    if(framecount >= 15):
-        event_manager.notify("update", fpsClock.get_time()/1000.0)
+    if(time >= 0.2):
+        event_manager.notify("update", time)
         event_manager.notify("draw")
         pygame.display.update()
-        framecount = 0
+        time = 0
 
     # React to pygame events
     eventlist = pygame.event.get()

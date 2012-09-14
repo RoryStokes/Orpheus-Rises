@@ -13,7 +13,7 @@ key_right = [K_RIGHT,K_d]
 # Entities
 entities = []
  # 0: player
-entities.append(Entity('img/character.png'))
+entities.append(Entity('img/character.png',(32,54)))
 
 
 # Tiles
@@ -27,13 +27,15 @@ tiles.append( Tile( 2,-1,-1) )
  # 3: void
 tiles.append( Tile( 0,-1,-1) )
  # 4: snakes a
-tiles.append( Tile(-1,-1, 8) )
+tiles.append( Tile(-1,-1, 9) )
  # 5: lava a
 tiles.append( Tile( 0,-1, 6) )
  # 6: lava b
 tiles.append( Tile( 0,-1, 7) )
  # 7: lava c
-tiles.append( Tile( 0,-1, 5) )
- # 8: snakes b
+tiles.append( Tile( 0,-1, 8) )
+ # 8: lava d
+#tiles.append( Tile( 0,-1, 6) )
+ # 9: snakes b
 tiles.append( Tile(-1,-1, 4) )
  

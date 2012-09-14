@@ -1,7 +1,10 @@
 # RENDER
+
 import world
 import pygame
 import tile
+import settings
+
 tileset = pygame.image.load('img/tile_colours.png')
 player = pygame.image.load('img/character.png')
 
@@ -59,6 +62,11 @@ class Render():
 
         # Blit background image
         self.window.blit( tileset, dest, mask )
+
+        # Draw objects
+        for i in self.world.get_objects(x,y-x):
+            dest = pygame.Rect( (self.world.height-y)*32 + x*64 - settings.entities[i].anchor_x, 16*(y+1) - settings.entities[i].anchor_y, 64,32)
+            self.window.blit( settings.entities[i].image, dest )
 
     def move_player(self,dir):
         if dir == "up":
