@@ -15,9 +15,11 @@ class Render():
         self.event = event
         self.window = window
         event.register("draw", self.draw)
+        event.register("focus", self.pan)
         self.i = 0
-        self.px = 0
-        self.py = 0
+        self.camera_x = 0
+        self.camera_y = 0
+        
         
     def draw(self):
         
@@ -52,11 +54,12 @@ class Render():
         #self.window.blit( player, (self.px,self.py) )
             
     def draw_cell(self,x,y):
+        (x_pos,y_pos) = self.from_grid(x,y)
         # Read ground type
         type = self.world.get_cell(x,y-x)
         
         # Calculate image locations
-        dest = pygame.Rect((self.world.height-y-1)*32 + x*64, 16*y, 64,32)
+        dest = pygame.Rect(x_pos-32, y_pos-16, 64,32)
         mask = pygame.Rect( (type%4)*64, (type/4)*32, 64,32)
 
         # Blit background image
@@ -64,6 +67,14 @@ class Render():
 
         # Draw objects
         for i in self.world.get_objects(x,y-x):
-            dest = pygame.Rect( (self.world.height-y)*32 + x*64 - i.anchor_x, 16*(y+1) - i.anchor_y, 64,32)
+            dest = pygame.Rect(x_pos  - i.anchor_x, y_pos - i.anchor_y, 64,32)
             self.window.blit( i.image, dest )
             
+    def pan(self,x,y):
+        print str(x) + ", " + str(y)
+
+    def from_grid(self,x,y):
+        new_x = (-y)*32 + x*64
+        new_y = 16*(y+1)
+        return(new_x,new_y)
+        

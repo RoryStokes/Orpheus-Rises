@@ -1,6 +1,9 @@
 # ENTITY
 import pygame
 
+def can_cross(type,source,target):
+    return source == target
+
 class Entity:
     
     def __init__(self,event,world,(x_loc,y_loc),type,(x_anch,y_anch)):
@@ -15,6 +18,7 @@ class Entity:
         self.event = event
         if self.type == "player":
             self.event.register("move",self.move)
+            self.event.notify("focus",self.x,self.y)
 
     def move(self,dir):
         if dir == "up":

@@ -67,20 +67,21 @@ class World:
         return self.objects[y][x]
 
     def move(self,type,(x_i,y_i),(x_f,y_f)):
-        if x_f >= 0 and x_f < self.width and y_f >= 0 and y_f < self.height and settings.tiles[self.map[y_i][x_i]].walkable == settings.tiles[self.map[y_f][x_f]].walkable:
+        if 0 <= x_f < self.width and 0 <= y_f < self.height:
+            source = settings.tiles[self.map[y_i][x_i]].walkable
+            target = settings.tiles[self.map[y_f][x_f]].walkable
+            if entity.can_cross(type,source,target):
             
-            print "MOVING "+type
-            new_objects = []
-            for i in self.objects[y_i][x_i]:
-                if i.type != type:
-                    print i.type+" ignored"
-                    new_objects.append(i)
-                else:
-                    print i.type+" moved"
-                    self.objects[y_f][x_f].append(i)
-                    
-                self.objects[y_i][x_i] = new_objects
+                new_objects = []
+                for i in self.objects[y_i][x_i]:
+                    if i.type != type:
+                        new_objects.append(i)
+                    else:
+                        self.objects[y_f][x_f].append(i)
+                        
+                        self.objects[y_i][x_i] = new_objects
 
-            return True 
-        else:
-            return False
+                self.event.notify("focus",x_f,y_f)
+                return True 
+
+        return False
