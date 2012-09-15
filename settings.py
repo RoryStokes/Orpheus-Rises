@@ -11,9 +11,11 @@ key_right = [K_RIGHT,K_d]
 
 # Entities
 sprites =[]
- # 0: player
+ # 0: Orpheus
 sprites.append( Sprite("player", "img/player.png", 32,64) )
- # 1: dead_tree
+ # 1: Eurydice
+sprites.append( Sprite("eurydice", "img/spirit.png",32,64) )
+ # 2: dead_tree
 sprites.append( Sprite("dead_tree", "img/dead_tree.png", 70,86) )
 
 # Tiles

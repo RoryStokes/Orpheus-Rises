@@ -49,13 +49,13 @@ while running:
             if e.key == K_ESCAPE:
                 event_manager.notify("quit")
             elif e.key in settings.key_up:
-                event_manager.notify("move","up")
+                event_manager.notify("move_player","up")
             elif e.key in settings.key_down:
-                event_manager.notify("move","down")
+                event_manager.notify("move_player","down")
             elif e.key in settings.key_left:
-                event_manager.notify("move","left")
+                event_manager.notify("move_player","left")
             elif e.key in settings.key_right:
-                event_manager.notify("move","right")
+                event_manager.notify("move_player","right")
     if len(eventlist)>0:
         event_manager.notify("draw")
         pygame.display.update()
