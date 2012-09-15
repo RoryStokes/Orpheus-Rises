@@ -74,14 +74,12 @@ class Render():
             self.window.blit( i.image, dest, mask )
             
     def pan(self,x,y):
-        print(str(x)+", "+str(y+x))
         (w,h) = self.window.get_size()
         new_x,new_y = self.from_grid(x,x+y)
         new_x -= w/2
         new_y -= h/2
 
         if abs(new_x -self.camera_x)>w/4 or abs(new_y - self.camera_y)>h/4:
-            print("MOVE "+str(new_x -self.camera_x)+", "+str(new_y - self.camera_y)+": "+str(w)+","+str(h))
             self.source_x = self.camera_x
             self.source_y = self.camera_y
             self.target_x = new_x

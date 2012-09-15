@@ -22,30 +22,81 @@ class Entity:
         if self.type == "player":
             self.event.register("move_player",self.move_player)
             self.event.notify("focus",self.x,self.y)
+         #   self.event.register("lose",self.player_lose)
         elif self.type == "eurydice":
             self.event.register("move_eurydice",self.move_eurydice)
+          #  self.event.register("lose",self.eurydice_lose)
 
     def move_player(self,dir):
+        sight_range = 10
         if dir == "up":
+
             self.state = 1
             self.event.notify("move_eurydice",self.x, self.y-1)
+
             if self.world.move(self.type,(self.x,self.y),( self.x, self.y-1)):
                 self.y -= 1
+
+            lose = False
+            for i in range(max(self.y-sight_range,0),self.y):
+                for entity in self.world.get_objects(self.x,i):
+                    if entity.type == "eurydice":
+                        lose = True
+                        break
+
+            if lose:
+                self.event.notify("lose")
+            
         elif dir == "down":
             self.state = 2
             self.event.notify("move_eurydice",self.x, self.y+1)
             if self.world.move(self.type,(self.x,self.y),( self.x, self.y+1)):
                 self.y += 1
+
+            
+
+            lose = False
+            for i in range(self.y,min(self.y+sight_range,self.world.height)):
+                for entity in self.world.get_objects(self.x,i):
+                    if entity.type == "eurydice":
+                        lose = True
+                        break
+
+            if lose:
+                self.event.notify("lose")
+
         elif dir == "left":
             self.state = 0
             self.event.notify("move_eurydice",self.x-1, self.y)
             if self.world.move(self.type,(self.x,self.y),( self.x-1, self.y)):
                 self.x -= 1
+
+            lose = False
+            for i in range(max(self.x-sight_range,0),self.x):
+                for entity in self.world.get_objects(i,self.y):
+                    if entity.type == "eurydice":
+                        lose = True
+                        break
+
+            if lose:
+                self.event.notify("lose")
+
         elif dir == "right":
             self.state = 3
             self.event.notify("move_eurydice",self.x+1, self.y)
             if self.world.move(self.type,(self.x,self.y),( self.x+1, self.y)):
                 self.x += 1
+
+            lose = False
+            for i in range(self.x,min(self.x+sight_range,self.world.width),self.x):
+                for entity in self.world.get_objects(i,self.y):
+                    if entity.type == "eurydice":
+                        lose = True
+                        break
+
+            if lose:
+                self.event.notify("lose")
+                
         self.event.notify("focus",self.x,self.y)
             
     def move_eurydice(self,x,y):
@@ -99,3 +150,9 @@ class Entity:
                         self.state = 3
                     elif x_dir<0:
                         self.state = 0
+
+    def player_lose():
+        self.event.deregister("move_player",self.move_eurydice)
+
+    def eurydice_lose():
+        self.event.deregister("move_eurydice",self.move_eurydice)

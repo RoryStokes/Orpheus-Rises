@@ -25,6 +25,11 @@ def close():
     running = False
 event_manager.register("quit", close)
 
+def lose():
+    print "LOSER"
+    close()
+event_manager.register("lose",lose)
+
 time = 0
 # Main game loop
 while running:
