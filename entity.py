@@ -46,6 +46,7 @@ class Entity:
             self.event.notify("move_eurydice",self.x+1, self.y)
             if self.world.move(self.type,(self.x,self.y),( self.x+1, self.y)):
                 self.x += 1
+        self.event.notify("focus",self.x,self.y)
             
     def move_eurydice(self,x,y):
         x_dist = self.x-x
@@ -67,12 +68,34 @@ class Entity:
             if(abs(x_dist)>abs(y_dist)):
                 
                 if self.world.move(self.type,(self.x,self.y),(self.x+x_dir, self.y)):
+
                     self.x += x_dir
+                    
+                    if x_dir>0:
+                        self.state = 3
+                    elif x_dir<0:
+                        self.state = 0
+
                 elif self.world.move(self.type,(self.x,self.y),(self.x, self.y+y_dir)):
                     self.y += y_dir
+                    
+                    if y_dir>0:
+                        self.state = 2
+                    elif y_dir<0:
+                        self.state = 1
                     
             else:
                 if self.world.move(self.type,(self.x,self.y),(self.x, self.y+y_dir)):
                     self.y += y_dir
+                    
+                    if y_dir>0:
+                        self.state = 2
+                    elif y_dir<0:
+                        self.state = 1
                 elif self.world.move(self.type,(self.x,self.y),(self.x+x_dir, self.y)):
                     self.x += x_dir
+                    
+                    if x_dir>0:
+                        self.state = 3
+                    elif x_dir<0:
+                        self.state = 0

@@ -43,7 +43,6 @@ class World:
                         self.objects[y][x].append( entity.Entity( self.event, self, settings.sprites[spawn_id], (x,y) ) )
                 x += 1
             y += 1
-        self.event.notify("load_tileset")
 
     def update(self,dt):
 
@@ -86,7 +85,6 @@ class World:
                         
                         self.objects[y_i][x_i] = new_objects
 
-                self.event.notify("focus",x_f,y_f)
                 return True 
 
         return False

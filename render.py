@@ -55,6 +55,8 @@ class Render():
                     
     def draw_cell(self,x,y):
         (x_pos,y_pos) = self.from_grid(x,y)
+        x_pos -= self.camera_x
+        y_pos -= self.camera_y
         # Read ground type
         type = self.world.get_cell(x,y-x)
         
@@ -68,12 +70,22 @@ class Render():
         # Draw objects
         for i in self.world.get_objects(x,y-x):
             mask = pygame.Rect(i.state*i.w,0,i.w,i.h)
-            dest = pygame.Rect(x_pos  - i.anchor_x, y_pos - i.anchor_y, 64,32)
+            dest = pygame.Rect(x_pos - i.anchor_x, y_pos - i.anchor_y, 64,32)
             self.window.blit( i.image, dest, mask )
             
     def pan(self,x,y):
-        self.camera_x = x
-        self.camera_y = y
+        print(str(x)+", "+str(y+x))
+        (w,h) = self.window.get_size()
+        new_x,new_y = self.from_grid(x,x+y)
+        new_x -= w/2
+        new_y -= h/2
+
+        if abs(new_x -self.camera_x)>w/4 or abs(new_y - self.camera_y)>h/4:
+            print("MOVE "+str(new_x -self.camera_x)+", "+str(new_y - self.camera_y)+": "+str(w)+","+str(h))
+            self.source_x = self.camera_x
+            self.source_y = self.camera_y
+            self.target_x = new_x
+            self.target_y = new_y
 
     def from_grid(self,x,y):
         new_x = (self.world.height-y)*32 + (x)*64
