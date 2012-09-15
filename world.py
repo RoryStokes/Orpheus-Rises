@@ -3,6 +3,7 @@ import json
 import settings
 import tile
 import entity
+import pygame
 
 class World:
     
@@ -23,7 +24,10 @@ class World:
         self.objects = []
         self.width = data["layers"][0]["width"]
         self.height = data["layers"][0]["height"]
-        
+
+        self.tileset = data["tilesets"][0]["image"][3:]
+        self.tile_w = data["tilesets"][0]["tileheight"]
+        self.tile_h = data["tilesets"][0]["tilewidth"]
         y = 0
         while y < self.height:
             self.map.append([])
@@ -39,8 +43,10 @@ class World:
                         self.objects[y][x].append( entity.Entity( self.event, self, settings.sprites[spawn_id], (x,y) ) )
                 x += 1
             y += 1
+        self.event.notify("load_tileset")
 
     def update(self,dt):
+
         y = 0
         while y < self.height:
             x = 0

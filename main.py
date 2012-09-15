@@ -16,6 +16,7 @@ event_manager = event.Event()
 world = world.World(event_manager)
 renderer = render.Render(event_manager,world,window)
 event_manager.notify("load_map", "maps/test")
+event_manager.notify("load_tileset")
 
 # Set up basic running code
 running = True

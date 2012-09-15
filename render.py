@@ -5,10 +5,6 @@ import pygame
 import tile
 import settings
 
-tileset = pygame.image.load('img/tile_colours.png')
-player = pygame.image.load('img/player.png')
-dead_tree = pygame.image.load('img/dead_tree.png')
-
 class Render():
     
     def __init__(self,event,world,window):
@@ -16,16 +12,21 @@ class Render():
         self.event = event
         self.window = window
         event.register("draw", self.draw)
+        event.register("load_tileset", self.load)
         event.register("focus", self.pan)
         self.camera_x = 0
         self.camera_y = 0
         
-    def draw(self):
-        
+    def load(self):
         # Load data from world
+        self.data = self.world.map
+        self.tileset = pygame.image.load(self.world.tileset)
+        self.tile_w = self.world.tile_w
+        self.tile_h = self.world.tile_h
+        
+    def draw(self):
         w = self.world.width
         h = self.world.height
-        data = self.world.map
 
         # Clear screen
         self.window.fill(pygame.Color(0,0,0,255))
@@ -62,7 +63,7 @@ class Render():
         mask = pygame.Rect( (type%4)*64, (type/4)*32, 64,32)
 
         # Blit background image
-        self.window.blit( tileset, dest, mask )
+        self.window.blit( self.tileset, dest, mask )
 
         # Draw objects
         for i in self.world.get_objects(x,y-x):
