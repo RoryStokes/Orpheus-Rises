@@ -18,6 +18,7 @@ class Entity:
         self.h = sprite.h
         self.world = world
         self.event = event
+        self.state = 0
         if self.type == "player":
             self.event.register("move_player",self.move_player)
             self.event.notify("focus",self.x,self.y)
@@ -26,18 +27,22 @@ class Entity:
 
     def move_player(self,dir):
         if dir == "up":
+            self.state = 1
             self.event.notify("move_eurydice",self.x, self.y-1)
             if self.world.move(self.type,(self.x,self.y),( self.x, self.y-1)):
                 self.y -= 1
         elif dir == "down":
+            self.state = 2
             self.event.notify("move_eurydice",self.x, self.y+1)
             if self.world.move(self.type,(self.x,self.y),( self.x, self.y+1)):
                 self.y += 1
         elif dir == "left":
+            self.state = 0
             self.event.notify("move_eurydice",self.x-1, self.y)
             if self.world.move(self.type,(self.x,self.y),( self.x-1, self.y)):
                 self.x -= 1
         elif dir == "right":
+            self.state = 3
             self.event.notify("move_eurydice",self.x+1, self.y)
             if self.world.move(self.type,(self.x,self.y),( self.x+1, self.y)):
                 self.x += 1

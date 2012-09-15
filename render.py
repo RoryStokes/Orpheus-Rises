@@ -67,7 +67,7 @@ class Render():
 
         # Draw objects
         for i in self.world.get_objects(x,y-x):
-            mask = pygame.Rect(0,0,i.w,i.h)
+            mask = pygame.Rect(i.state*i.w,0,i.w,i.h)
             dest = pygame.Rect(x_pos  - i.anchor_x, y_pos - i.anchor_y, 64,32)
             self.window.blit( i.image, dest, mask )
             
