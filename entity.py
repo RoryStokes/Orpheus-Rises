@@ -14,6 +14,8 @@ class Entity:
         self.anchor_y = sprite.anchor_y
         self.x = x_loc
         self.y = y_loc
+        self.w = sprite.w
+        self.h = sprite.h
         self.world = world
         self.event = event
         if self.type == "player":
