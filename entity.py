@@ -2,13 +2,13 @@
 import pygame
 
 def can_cross(type,source,target):
-    return source == target
+    return abs(source - target) < 1
 
 class Entity:
     
     def __init__(self,event,world,(x_loc,y_loc),type,(x_anch,y_anch)):
         print type
-        self.image = pygame.image.load('img/'+type+'.png')
+        self.image =  pygame.image.load('img/'+type+'.png')
         self.type = type
         self.anchor_x = x_anch
         self.anchor_y = y_anch

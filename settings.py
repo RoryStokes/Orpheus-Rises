@@ -18,7 +18,7 @@ tiles.append( Tile( 1, 0,-1) )
  # 1: low ground
 tiles.append( Tile( 1,-1,-1) )
  # 2: high ground
-tiles.append( Tile( 2,-1,-1) )
+tiles.append( Tile( 1.5,-1,-1) )
  # 3: void
 tiles.append( Tile( 0,-1,-1) )
  # 4: lava a
@@ -30,29 +30,29 @@ tiles.append( Tile( 0,-1, 7) )
  # 7: lava d
 tiles.append( Tile( 0,-1, 4) )
  # 8: snakes a
-tiles.append( Tile( 1,-1, 9) )
+tiles.append( Tile( 1, 1, 9) )
  # 9: snakes b
-tiles.append( Tile( 1,-1, 8) )
+tiles.append( Tile( 1, 1, 8) )
  # 10: blue
 tiles.append( Tile( 1,-1,-1) )
  # 11: pink
 tiles.append( Tile( 1,-1,-1) )
  # 12: water_right a
-tiles.append( Tile( 1,-1, 13) )
+tiles.append( Tile( 0,-1, 13) )
  # 13: water_right b
-tiles.append( Tile( 1,-1, 14) )
+tiles.append( Tile( 0,-1, 14) )
  # 14: water_right c
-tiles.append( Tile( 1,-1, 15) )
+tiles.append( Tile( 0,-1, 15) )
  # 15: water_right d
-tiles.append( Tile( 1,-1, 12) )
+tiles.append( Tile( 0,-1, 12) )
  # 16: water_down a
-tiles.append( Tile( 1,-1, 17) )
+tiles.append( Tile( 0,-1, 17) )
  # 17: water_down b
-tiles.append( Tile( 1,-1, 18) )
+tiles.append( Tile( 0,-1, 18) )
  # 18: water_down c
-tiles.append( Tile( 1,-1, 19) )
+tiles.append( Tile( 0,-1, 19) )
  # 19: water_down d
-tiles.append( Tile( 1,-1, 16) )
+tiles.append( Tile( 0,-1, 16) )
  # 20: water_foam a
 tiles.append( Tile( 1,-1, 21) )
  # 21: water_foam b

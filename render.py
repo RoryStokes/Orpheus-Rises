@@ -16,7 +16,7 @@ class Render():
         self.event = event
         self.window = window
         event.register("draw", self.draw)
-        #event.register("focus", self.
+        event.register("focus", self.pan)
         self.camera_x = 0
         self.camera_y = 0
 
@@ -74,10 +74,11 @@ class Render():
             self.window.blit( i.image, dest )
             
     def pan(self,x,y):
-        print str(x) + ", " + str(y)
+        self.camera_x = x
+        self.camera_y = y
 
     def from_grid(self,x,y):
-        new_x = (self.world.height-y)*32 + x*64
-        new_y = 16*(y+1)
+        new_x = (self.world.height-y)*32 + (x)*64
+        new_y = 16*(y + 1)
         return(new_x,new_y)
         
