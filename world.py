@@ -35,9 +35,8 @@ class World:
                 self.objects[y].append([])
                 if i < len(settings.tiles):
                     spawn_id = settings.tiles[i-1].spawn
-                    if spawn_id >= 0 and spawn_id < len(settings.entities):
-                        self.objects[y][x].append( entity.Entity( self.event, self, (x,y), settings.entities[spawn_id], (32,54) ) )
-                        
+                    if spawn_id >= 0 and spawn_id < len(settings.sprites):
+                        self.objects[y][x].append( entity.Entity( self.event, self, settings.sprites[spawn_id], (x,y) ) )
                 x += 1
             y += 1
 

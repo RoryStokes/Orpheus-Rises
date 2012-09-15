@@ -19,9 +19,6 @@ class Render():
         event.register("focus", self.pan)
         self.camera_x = 0
         self.camera_y = 0
-
-        self.tree_x = 14*32
-        self.tree_y = 6*16
         
     def draw(self):
         
@@ -54,8 +51,7 @@ class Render():
 
             y += 1
 
-        self.window.blit( dead_tree, (self.tree_x,self.tree_y) )
-            
+                    
     def draw_cell(self,x,y):
         (x_pos,y_pos) = self.from_grid(x,y)
         # Read ground type

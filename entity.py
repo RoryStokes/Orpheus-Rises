@@ -1,17 +1,17 @@
 # ENTITY
 import pygame
+from sprite import Sprite
 
 def can_cross(type,source,target):
     return abs(source - target) < 1
 
 class Entity:
     
-    def __init__(self,event,world,(x_loc,y_loc),type,(x_anch,y_anch)):
-        print type
-        self.image =  pygame.image.load('img/'+type+'.png')
-        self.type = type
-        self.anchor_x = x_anch
-        self.anchor_y = y_anch
+    def __init__(self,event,world,sprite,(x_loc,y_loc)):
+        self.image =  sprite.image
+        self.type = sprite.name
+        self.anchor_x = sprite.anchor_x
+        self.anchor_y = sprite.anchor_y
         self.x = x_loc
         self.y = y_loc
         self.world = world

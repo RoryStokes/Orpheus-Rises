@@ -1,6 +1,7 @@
 # SETTINGS
 from pygame.locals import *
 from tile import Tile
+from sprite import Sprite
 
 # Key bindings
 key_up = [K_UP,K_w]
@@ -9,7 +10,11 @@ key_left = [K_LEFT,K_a]
 key_right = [K_RIGHT,K_d]
 
 # Entities
-entities = ["player","dead_tree"]
+sprites =[]
+ # 0: player
+sprites.append( Sprite("player", "img/player.png", 32,64) )
+ # 1: dead_tree
+sprites.append( Sprite("dead_tree", "img/dead_tree.png", 70,86) )
 
 # Tiles
 tiles = []
