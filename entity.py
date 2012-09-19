@@ -28,7 +28,7 @@ class Entity:
           #  self.event.register("lose",self.eurydice_lose)
 
     def move_player(self,dir):
-        sight_range = 10
+        sight_range = 5
         if dir == "up":
 
             self.state = 1

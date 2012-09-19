@@ -12,11 +12,15 @@ key_right = [K_RIGHT,K_d]
 # Entities
 sprites =[]
  # 0: Orpheus
-sprites.append( Sprite("player", "img/player.png", (15,42),(29,46) ) )
+sprites.append( Sprite("player", "img/player.png", (15,42),(29,46)) )
  # 1: Eurydice
 sprites.append( Sprite("eurydice", "img/eurydice.png",(15,42),(29,46)) )
- # 2: dead_tree
-sprites.append( Sprite("dead_tree", "img/dead_tree.png", (70,86),(96,96)) )
+ # 2: Dead Tree a
+sprites.append( Sprite("dead_tree_1", "img/dead_tree_1.png", (70,86),(96,96)) )
+ # 3: Dead Tree b
+sprites.append( Sprite("dead_tree_2", "img/dead_tree_2.png", (26,86),(96,96)) )
+ # 4: Game over
+sprites.append( Sprite("gameover", "img/gameover.png", (387,305),(387,305)) )
 
 # Tiles
 tiles = []
@@ -25,7 +29,7 @@ tiles.append( Tile( 1, 0,-1) )
  # 1: low ground
 tiles.append( Tile( 1,-1,-1) )
  # 2: high ground
-tiles.append( Tile( 1.5,-1,-1) )
+tiles.append( Tile(1.5,-1,-1) )
  # 3: void
 tiles.append( Tile( 0,-1,-1) )
  # 4: lava a
@@ -37,13 +41,13 @@ tiles.append( Tile( 0,-1, 7) )
  # 7: lava d
 tiles.append( Tile( 0,-1, 4) )
  # 8: snakes a
-tiles.append( Tile( 1, 1, 9) )
+tiles.append( Tile( 1,-1, 9) )
  # 9: snakes b
-tiles.append( Tile( 1, 1, 8) )
+tiles.append( Tile( 1,-1, 8) )
  # 10: blue
 tiles.append( Tile( 1,-1,-1) )
  # 11: pink
-tiles.append( Tile( 1,-1,-1) )
+tiles.append( Tile( 1, 1,-1) )
  # 12: water_right a
 tiles.append( Tile( 0,-1, 13) )
  # 13: water_right b
