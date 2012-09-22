@@ -88,7 +88,7 @@ class Entity:
                 self.x += 1
 
             lose = False
-            for i in range(self.x,min(self.x+sight_range,self.world.width),self.x):
+            for i in range(self.x,min(self.x+sight_range,self.world.width)):
                 for entity in self.world.get_objects(i,self.y):
                     if entity.type == "eurydice":
                         lose = True
