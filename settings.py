@@ -19,8 +19,10 @@ sprites.append( Sprite("eurydice", "img/eurydice.png",(15,42),(29,46)) )
 sprites.append( Sprite("dead_tree_1", "img/dead_tree_1.png", (70,86),(96,96)) )
  # 3: Dead Tree b
 sprites.append( Sprite("dead_tree_2", "img/dead_tree_2.png", (26,86),(96,96)) )
- # 4: Game over
-sprites.append( Sprite("gameover", "img/gameover.png", (387,305),(387,305)) )
+ # 4 End portal
+sprites.append( Sprite("end_portal", "img/end_portal.png", (32,50),(64,64)) )
+ # 5 Magic fire
+sprites.append( Sprite("magic_fire", "img/magic_fire.png", (32,64),(64,64)) )
 
 # Tiles
 tiles = []
@@ -38,14 +40,14 @@ tiles.append( Tile(-1,-1, 5) )
 tiles.append( Tile( 0,-1, 6) )
  # 6: lava c
 tiles.append( Tile( 0,-1, 7) )
- # 7: lava d
-tiles.append( Tile( 0,-1, 4) )
+ # 7: lava d WITH FIRE!
+tiles.append( Tile( 0, 5, 4) )
  # 8: snakes a
 tiles.append( Tile( 1,-1, 9) )
  # 9: snakes b
 tiles.append( Tile( 1,-1, 8) )
- # 10: blue
-tiles.append( Tile( 1,-1,-1) )
+ # 10: end of level
+tiles.append( Tile( 1, 4,-1) )
  # 11: pink
 tiles.append( Tile( 1, 1,-1) )
  # 12: water_right a

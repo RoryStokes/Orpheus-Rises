@@ -41,6 +41,8 @@ while running:
     time += fpsClock.get_time()/1000.0
     # Trigger update events
     if(time >= 0.2):
+    	event_manager.notify("animate_portal", 4)
+    	event_manager.notify("animate_fire", 9)
         event_manager.notify("update", time)
         event_manager.notify("draw")
         pygame.display.update()
@@ -68,7 +70,6 @@ while running:
     if len(eventlist)>0:
         event_manager.notify("draw")
         pygame.display.update()
-                
 
     event_manager.update()
     

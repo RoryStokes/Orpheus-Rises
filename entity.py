@@ -26,6 +26,10 @@ class Entity:
         elif self.type == "eurydice":
             self.event.register("move_eurydice",self.move_eurydice)
           #  self.event.register("lose",self.eurydice_lose)
+        elif self.type == "end_portal":
+        	self.event.register("animate_portal",self.animate_sprites)
+        elif self.type == "magic_fire":
+        	self.event.register("animate_fire",self.animate_sprites)
 
     def move_player(self,dir):
         sight_range = 5
@@ -156,3 +160,6 @@ class Entity:
 
     def eurydice_lose():
         self.event.deregister("move_eurydice",self.move_eurydice)
+
+    def animate_sprites(self, frames):
+        self.state = (self.state + 1) % frames
